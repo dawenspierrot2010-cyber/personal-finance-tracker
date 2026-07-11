@@ -19,9 +19,9 @@ A console-based finance tracker written in Python.
 - Python
 - Matplotlib
 
-## Version
+## Current Version
 
-1.0
+1.0 (Released July 2026)
 
 ## Future Improvements
 
