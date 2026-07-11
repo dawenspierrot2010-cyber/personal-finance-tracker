@@ -22,3 +22,11 @@ A console-based finance tracker written in Python.
 ## Version
 
 1.0
+
+## Future Improvements
+
+- Export reports
+- Budget tracking
+- User accounts
+- GUI version
+- Database integration
