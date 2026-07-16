@@ -583,6 +583,17 @@ def calculate():
 
             print(f"Current Balance: ${balance:.2f}")
 
+            print("\nFinancial Status:")
+
+            if balance > total_income * 0.5:
+                print("🟢 Excellent! You're saving more than your're spending.")
+
+            elif balance >= 0:
+                print("🟡 Good, but watch your spending.")
+
+            else:
+                print("🔴 Warning! You're spending more than you've earned.")
+
         elif choice == "4":
             return
 
