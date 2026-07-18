@@ -194,7 +194,8 @@ def financial_dashboard():
         print("5. Goal Progress")
         print("6. Graphs")
         print("7. Calculate")
-        print("8. Back")
+        print("8. Financial Health")
+        print("9. Back")
 
         choice = input("Choose an option: ")
 
@@ -218,8 +219,11 @@ def financial_dashboard():
 
         elif choice == "7":
             calculate()
-            
+
         elif choice == "8":
+            financial_health()
+            
+        elif choice == "9":
             break
         else:
             print("Invalid choice. Please enter 1-8.")
@@ -583,7 +587,7 @@ def calculate():
 
             print(f"Current Balance: ${balance:.2f}")
 
-            print("\nFinancial Status:")
+            print("\nFinancial Status:0")
 
             if balance > total_income * 0.5:
                 print("🟢 Excellent! You're saving more than your're spending.")
@@ -600,6 +604,36 @@ def calculate():
         else:
             print("Invalid choice.")
 
+def financial_health():
+    print("\n" + "=" * 30)
+    print("     FINANCIAL HEALTH")
+    print("=" * 35)
+
+    total_income = 0
+    total_expense = 0
+
+    for parts in get_parsed_transactions():
+        if len(parts) == 4:
+            transaction_type = parts[1]
+            amount = float(parts[2])
+
+            if transaction_type == "earn":
+                total_income += amount
+            elif transaction_type == "spend":
+                total_expense += amount
+
+    balance = total_income - total_expense
+
+    if total_income > 0:
+        savings_rate = (balance / total_income) * 100
+    else:
+        savings_rate = 0
+
+    print(f"Income:   ${total_income:.2f}")
+    print(f"Expenses: ${total_expense:.2f}")
+    print(f"Balance:  ${balance:.2f}")
+    print(f"Savings Rate: {savings_rate:.1f}%")
+    
 def delete_transaction():
     try: 
         transactions = load_transactions() 
