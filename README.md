@@ -1,32 +1,38 @@
-# Personal Finance Tracker
+# 💰 Personal Finance Tracker
 
-A console-based finance tracker written in Python.
+A command-line finance tracker built in Python that helps users manage their money, track spending goals, and monitor their financial health.
 
 ## Features
 
-- Add income
-- Add expenses
-- Edit transactions
+- Add income and expenses
+- View transaction history
 - Delete transactions
-- Search transactions
-- Monthly summaries
-- Savings goals
-- Financial dashboard
-- Graphs
+- Monthly financial summary
+- Set spending goals
+- Track goal progress
+- Financial Health Dashboard
+- Savings Rate calculation
+- Financial Score (A–F)
+- Progress bars for spending goals
 
 ## Technologies
 
-- Python
-- Matplotlib
-
-## Current Version
-
-1.0 (Released July 2026)
+- Python 3
+- File-based storage (.txt)
+- Git & GitHub
 
 ## Future Improvements
 
-- Export reports
-- Budget tracking
-- User accounts
-- GUI version
-- Database integration
+- Charts & graphs
+- Budget alerts
+- Monthly reports
+- Smart financial insights
+
+## How to Run
+
+1. Clone the repository
+2. Open the project folder
+3. Run:
+
+```bash
+python "Finance Tracker.py"
