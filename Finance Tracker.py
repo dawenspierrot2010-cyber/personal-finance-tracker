@@ -406,6 +406,13 @@ def goal_progress():
                     print(f"Current Progress: ${progress:.2f}")
                     print(f"Remaining: ${remaining:.2f}")
 
+                    if goal > 0:
+                        percentage = (progress / goal) * 100
+                    else:
+                        percentage = 0
+
+                    print(f"Progress: {progress_bar(percentage)} {percentage:.1f}%")
+
     except FileNotFoundError:
         print("No file found yet.")
 
@@ -499,7 +506,14 @@ def load_transactions():
 
     except FileNotFoundError:
         return []
-    
+
+def progress_bar(percent):
+    percent = min(max(percent, 0), 100)
+
+    filled = int(percent // 10)
+    return "█" * filled + "░" * (10 - filled)
+
+
 def print_header(title):
     print("=" * 40)
     print(title.center(40))
@@ -628,11 +642,35 @@ def financial_health():
         savings_rate = (balance / total_income) * 100
     else:
         savings_rate = 0
+    
+    if savings_rate >= 30:
+        grade = "A"
+        status = "🟢 Excellent saving habits, Keep it up!"
+    elif savings_rate >= 20:
+        grade = "B"
+        status = "🔵 Good job. There's still room to imporve."
+    elif savings_rate >= 10:
+        grade = "C"
+        status = "🟡 You're saving some money, but try to increase it."
+    elif savings_rate >= 0:
+        grade = "D"
+        status = "🟠 You're barely saving. Watch your spending."
+    else:
+        grade = "F"
+        status = "🔴 You're spending more than you earn."
 
     print(f"Income:   ${total_income:.2f}")
     print(f"Expenses: ${total_expense:.2f}")
     print(f"Balance:  ${balance:.2f}")
     print(f"Savings Rate: {savings_rate:.1f}%")
+    print(f"\nFinancial Score: {grade}")
+    print(f"Status: {status}")
+    
+    print("\n" + "=" * 30)
+    print("GOAL PROGRESS")
+    print("=" * 35)
+
+    goal_progress()
     
 def delete_transaction():
     try: 
